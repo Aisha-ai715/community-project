@@ -22,3 +22,46 @@ bottom.addEventListener('click', (e)=>{
     }
 
 });
+
+const replacable = document.querySelector('.replacable-content');
+const signUp = document.querySelector('.signup-tab');
+const removableLogin = document.querySelector('.signup-div');
+const login = document.querySelector('.login-tab');
+
+
+login.addEventListener('click', (e)=>{
+   
+    
+    const link = "../login/login.html";
+    
+    fetch(link).then((res)=>{
+
+        return res.text();
+
+    }).then((component)=>{
+        removableLogin.remove();
+        replacable.innerHTML = component;
+        loadScripts(replacable);
+        
+    }).catch(()=>{
+        replacable.innerHTML= '<h2>There are nothing in the page<h2>';
+    });
+});
+
+function loadScripts(element){
+    const scripts = element.querySelectorAll("script");
+    for (let script of scripts) {
+        const newScript = document.createElement('script');
+        if(script.src){
+            newScript.src = script.src;
+        }
+        if(script.textContent){
+            newScript.textContent = script.textContent;
+        }
+        script.remove()
+        
+        document.body.appendChild(newScript)
+    }
+
+}
+

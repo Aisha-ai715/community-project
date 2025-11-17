@@ -39,12 +39,12 @@ function loadScripts(element){
 
 }
 
-loginTab.addEventListener('click', ()=>{
-    login.computedStyleMap.display = 'block';
-    signup.computedStyleMap.display = 'none';
-})
+// loginTab.addEventListener('click', ()=>{
+//     login.computedStyleMap.display = 'block';
+//     signup.computedStyleMap.display = 'none';
+// })
 
-signup.addEventListener('click', ()=>{
-    login.computedStyleMap.display = 'none';
-    location.href("./module/signup/signup.html");
-})
+// signup.addEventListener('click', ()=>{
+//     login.computedStyleMap.display = 'none';
+//     location.href("./module/signup/signup.html");
+// })

@@ -24,13 +24,10 @@ bottom.addEventListener('click', (e)=>{
 });
 
 const replacable = document.querySelector('.replacable-content');
-const signUp = document.querySelector('.signup-tab');
+const signUp = document.querySelector('.signup-btn');
 const removableLogin = document.querySelector('.log-div');
-const login = document.querySelector('.login-tab');
+const login = document.querySelector('.login-btn');
 
-login.addEventListener('click', ()=>{
-    location.reload();
-})
 
 signUp.addEventListener('click', (e)=>{
    
@@ -46,6 +43,8 @@ signUp.addEventListener('click', (e)=>{
         replacable.innerHTML = component;
         loadScripts(replacable);
 
+
+        
     }).catch(()=>{
         replacable.innerHTML= '<h2>There are nothing in the page<h2>';
     });
@@ -67,3 +66,9 @@ function loadScripts(element){
     }
 
 }
+
+
+
+login.addEventListener('click', ()=>{
+    location.reload();
+})

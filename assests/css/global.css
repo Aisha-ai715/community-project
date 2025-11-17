@@ -14,6 +14,7 @@
     background-color: white;
     border-radius: 14px;
     box-shadow: 6px 7px 14px #c8cacc, -6px 7px 14px #c8cacc;
+
 }
 
 .logo-icon {
@@ -25,7 +26,8 @@
     margin-bottom: .875rem;
 }
 
-.log-in, .sign-up {
+.log-in,
+.sign-up {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +40,7 @@
     color: #6a7282;
 }
 
-.policy a{
+.policy a {
     text-decoration: none;
     color: #155DFC;
 }
@@ -57,7 +59,11 @@
 }
 
 /* Animation */
-.circle-shape, .arrow-shape, .triangle-shape {
+.circle-shape,
+.arrow-shape,
+.triangle-shape,
+.circle-one,
+.circle-two {
     position: absolute;
 }
 
@@ -74,11 +80,11 @@
 
 @keyframes move {
     0% {
-        top:100px;
+        top: 6.25rem;
     }
 
     50% {
-        top:115px;
+        top: 7.1875rem;
     }
 }
 
@@ -86,4 +92,25 @@
 
     right: 21.25rem;
     top: 20rem;
+}
+
+.circle-one,
+.circle-two {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    opacity: .4;
+}
+
+.circle-one {
+    background-color: #aa9dd9;
+    top: 13.75rem;
+    left: 4.6rem;
+
+}
+
+.circle-two {
+    background-color: #B9D6FB;
+    top: 25.625rem;
+    left: 7.9375rem;
 }

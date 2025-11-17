@@ -28,7 +28,7 @@ p {
     text-align: center;
 }
 
-.tabs-btn {
+.login-tabs-btn {
     background-color: #F3F4F6;
     max-width: 25rem;
     height: 2.25rem;
@@ -40,8 +40,8 @@ p {
     margin-bottom: 2.25rem;
 }
 
-.login-tab,
-.signup-tab {
+.login-btn,
+.signup-btn {
     width: 12.25rem;
     height: 1.8125rem;
     font-weight: 500;
@@ -53,11 +53,11 @@ p {
     align-items: center;
 }
 
-.tabs-btn .login-tab {
+.login-tabs-btn .login-btn {
     background-color: white;
 }
 
-.tabs-btn .signup-tab {
+.login-tabs-btn .signup-btn {
     background-color: transparent;
 }
 
