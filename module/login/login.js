@@ -1,18 +1,18 @@
-const email = document.querySelector('.email');
-const password = document.querySelector('.password');
-const bottom = document.querySelector('.next-btn');
-const form = document.getElementById('form');
+const loginEmail = document.querySelector('.input-email');
+const loginPassword = document.querySelector('.password');
+const loginBottom = document.querySelector('.next-btn');
+const loginForm = document.getElementById('form');
 
-form.addEventListener('submit', (e)=>{
+loginForm.addEventListener('submit', (e)=>{
     e.preventDefault();
 
 })
 
 let storedInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-bottom.addEventListener('click', (e)=>{
+loginBottom.addEventListener('click', (e)=>{
     e.preventDefault();
-    if(email.value === storedInfo.Email && password.value === storedInfo.Password){
+    if(loginEmail.value === storedInfo.Email && loginPassword.value === storedInfo.Password){
         console.log('proceeeed');
     } else {
         console.log ('please inter right information');
@@ -20,12 +20,12 @@ bottom.addEventListener('click', (e)=>{
 })
 
 const replacable = document.querySelector('.replacable-content');
-const signUp = document.querySelector('.signup-btn');
-const removableLogin = document.querySelector('.log-div');
+const signUpBtn = document.querySelector('.signup-btn');
+const removableImport = document.querySelector('.log-div');
 const login = document.querySelector('.login-btn');
 
 
-signUp.addEventListener('click', (e)=>{
+signUpBtn.addEventListener('click', (e)=>{
    
     
     const link = "/module/signup/signup.html";
@@ -35,7 +35,7 @@ signUp.addEventListener('click', (e)=>{
         return res.text();
 
     }).then((component)=>{
-        removableLogin.remove();
+       removableImport.remove();
         replacable.innerHTML = component;
         loadScripts(replacable);
 
