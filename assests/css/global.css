@@ -14,7 +14,6 @@
     background-color: white;
     border-radius: 14px;
     box-shadow: 6px 7px 14px #c8cacc, -6px 7px 14px #c8cacc;
-
 }
 
 .logo-icon {
@@ -100,7 +99,7 @@
     height: 4rem;
     border-radius: 50%;
     animation: inout 2s ease-out infinite;
-   
+
 }
 
 @keyframes inout {
@@ -125,14 +124,13 @@
 }
 
 .circle-one {
-    background-color: #aa9dd9;
+    background: radial-gradient(circle at center, #5757DD, white);
     top: 13.75rem;
     left: 4.6rem;
-
 }
 
 .circle-two {
-    background-color: #B9D6FB;
+    background: radial-gradient(circle at center, #B33BB3, white);
     top: 25.625rem;
     left: 7.9375rem;
 }

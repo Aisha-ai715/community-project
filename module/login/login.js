@@ -11,7 +11,7 @@ form.addEventListener('submit', (e)=>{
 let storedInfo = JSON.parse(localStorage.getItem('userInfo'));
 
 bottom.addEventListener('click', (e)=>{
-    e.preventDefault;
+    e.preventDefault();
     if(email.value === storedInfo.Email && password.value === storedInfo.Password){
         console.log('proceeeed');
     } else {
