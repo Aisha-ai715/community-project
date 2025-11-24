@@ -19,21 +19,23 @@ firstLetter.innerHTML = getinfo.Name[0];
 showArrow.addEventListener('click', () => {
     hideArrow.style.display = "block";
     showArrow.style.display = "none";
-    for(let elem of tagContent){
+    for (let elem of tagContent) {
         elem.style.display = "none"
     }
     sidenavContainer.style.width = "79px"
-   
+
+
+
 })
 
 hideArrow.addEventListener('click', () => {
     hideArrow.style.display = "none";
     showArrow.style.display = "block";
-    for(let elem of tagContent){
+    for (let elem of tagContent) {
         elem.style.display = "block"
         brand.style.display = "flex";
     }
-  
+
 })
 
 
@@ -51,8 +53,8 @@ for (let tab of currentTab) {
 
 }
 
-for( e of logoutBotton){
-    e.addEventListener('click', ()=>{
+for (e of logoutBotton) {
+    e.addEventListener('click', () => {
         window.location.href = "/auth.html";
     })
 }
