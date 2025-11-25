@@ -11,16 +11,17 @@ const card = [
     { title: "Complection Rate", image: "/components/card/images/progress-arrow.svg", Alt: 'progress arrow icon', amount: "0%", comment: "Task Complection" },
 ];
 
+
+
 changeContent.forEach((ele, i) => {
     const cardTitle = ele.querySelector('.card-title');
     const cardImage = ele.querySelector('.img-conatainer img'); 
     const cardAmount = ele.querySelector('.amount-num');
     const cardComment = ele.querySelector('.amount-comment');
 
-  
     cardTitle.textContent = card[i].title;
     cardImage.src = card[i].image;
-    cardImage.alt = card[i].alt;
+    cardImage.alt = card[i].Alt;
     cardAmount.textContent = card[i].amount;
     cardComment.textContent = card[i].comment;
 });

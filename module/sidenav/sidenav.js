@@ -9,6 +9,9 @@ const sidenavContainer = document.querySelector('.sidenav-container');
 const brand = document.querySelector('.sidenav-brand_all')
 const brandContainer = document.querySelector('.sidenav-brand');
 const logoutBotton = document.querySelectorAll('.logout');
+const allSidebarContainer = document.querySelector('.sidenav-container-tabs');
+const dashboardExpand = document.querySelector(".dashoard-container");
+
 
 let getinfo = JSON.parse(localStorage.getItem('userInfo'));
 
@@ -22,9 +25,11 @@ showArrow.addEventListener('click', () => {
     for (let elem of tagContent) {
         elem.style.display = "none"
     }
-    sidenavContainer.style.width = "79px"
-
-
+    sidenavContainer.style.width = "79px";
+    dashboardExpand.style.transform = "scale(1.1)";
+    dashboardExpand.style.overflow = "hidden";
+    dashboardExpand.style.paddingTop = "3rem";
+    dashboardExpand.style.marginRight = "7.5rem";
 
 })
 
@@ -35,7 +40,10 @@ hideArrow.addEventListener('click', () => {
         elem.style.display = "block"
         brand.style.display = "flex";
     }
-
+    sidenavContainer.style.width = "16rem";
+    dashboardExpand.style.transform = "scale(1)";
+    
+ 
 })
 
 
