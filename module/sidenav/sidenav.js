@@ -1,3 +1,5 @@
+// import { btnClick } from './module/tasks/tasks.js';
+
 const userName = document.querySelector('.user-name');
 const userEmail = document.querySelector('.user-email');
 const firstLetter = document.querySelector('.first-letter');
@@ -10,7 +12,15 @@ const brand = document.querySelector('.sidenav-brand_all')
 const brandContainer = document.querySelector('.sidenav-brand');
 const logoutBotton = document.querySelectorAll('.logout');
 const allSidebarContainer = document.querySelector('.sidenav-container-tabs');
-const dashboardExpand = document.querySelector(".dashoard-container");
+const dashboardExpand = document.querySelector(".dashboard-content");
+const dashoardContainer = document.querySelector(".dashoard-container");
+
+
+const taskPage = document.getElementById('tasks-page');
+const mainPage = document.querySelector('.main__contents');
+const dashPage = document.getElementById('dashboard-page');
+const communityPage = document.getElementById('community-page');
+
 
 
 let getinfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -25,11 +35,18 @@ showArrow.addEventListener('click', () => {
     for (let elem of tagContent) {
         elem.style.display = "none"
     }
+
     sidenavContainer.style.width = "79px";
-    dashboardExpand.style.transform = "scale(1.1)";
-    dashboardExpand.style.overflow = "hidden";
-    dashboardExpand.style.paddingTop = "3rem";
-    dashboardExpand.style.marginRight = "7.5rem";
+    dashboardExpand.classList.add('expand-all');
+    dashoardContainer.classList.add('container-expanded');
+
+    const taskPageExpand = document.querySelector('.tasks');
+    taskPageExpand.classList.add('expand-all');
+    taskPageExpand.classList.add('container-expanded');
+
+    const communityExpand = document.querySelector('.community');
+    communityExpand.classList.add('expand-all');
+    communityExpand.classList.add('container-expanded');
 
 })
 
@@ -40,10 +57,18 @@ hideArrow.addEventListener('click', () => {
         elem.style.display = "block"
         brand.style.display = "flex";
     }
+
     sidenavContainer.style.width = "16rem";
-    dashboardExpand.style.transform = "scale(1)";
-    
- 
+    dashboardExpand.classList.remove('expand-all');
+    dashoardContainer.classList.remove('container-expanded');
+
+    const taskPageExpand = document.querySelector('.tasks');
+    taskPageExpand.classList.remove('expand-all');
+    taskPageExpand.classList.remove('container-expanded');
+
+    const communityExpand = document.querySelector('.community');
+    communityExpand.classList.remove('expand-all');
+    communityExpand.classList.remove('container-expanded');
 })
 
 
@@ -66,3 +91,47 @@ for (e of logoutBotton) {
         window.location.href = "/auth.html";
     })
 }
+
+
+dashPage.addEventListener('click', () => {
+    window.location.href = '/main.html';
+})
+
+
+taskPage.addEventListener('click', () => {
+
+    mainPage.classList.add('main-tasks__contents');
+
+    fetch('./module/tasks/tasks.html').then((res) => {
+        return res.text();
+    }).then((inside) => {
+        mainPage.innerHTML = inside;
+        // btnClick();
+
+        const taskJs = document.createElement('script');
+        taskJs.src = '/module/tasks/tasks.js';
+        mainPage.appendChild(taskJs);
+
+
+    }).catch((err) => {
+        console.log("fail to fetch");
+    })
+
+})
+
+communityPage.addEventListener('click', () => {
+
+    fetch('./module/community/community.html').then((res) => {
+        return res.text();
+    }).then((inside) => {
+        mainPage.innerHTML = inside;
+
+        const communityJs = document.createElement('script');
+        communityJs.src = '/module/community/community.js';
+        mainPage.appendChild(communityJs);
+
+    }).catch((err) => {
+        console.log("fail to fetch");
+    })
+
+})

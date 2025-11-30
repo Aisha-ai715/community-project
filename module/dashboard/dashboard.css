@@ -3,6 +3,11 @@
     box-sizing: border-box;
     max-width: 69.375rem;
     padding: 2rem;
+    transition: width 1s ease;
+}
+
+.dashboard__expand {
+    transform: scale(1.1);
 }
 
 .dashboard-title {

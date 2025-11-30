@@ -12,7 +12,6 @@ const card = [
 ];
 
 
-
 changeContent.forEach((ele, i) => {
     const cardTitle = ele.querySelector('.card-title');
     const cardImage = ele.querySelector('.img-conatainer img'); 

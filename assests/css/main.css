@@ -1,10 +1,9 @@
-
 .main {  
     max-width: 1365px;
     background-color: #F8F9FA;
     display: flex;
     box-sizing: border-box;
-    height: 720px;
+    max-height: 720px;
     align-items: self-start;
     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
@@ -20,4 +19,8 @@
     max-width: 69.375rem;
     margin-left: 16rem;
     width: 100%;
+}
+
+.main-tasks__contents{
+    padding: 2rem;
 }

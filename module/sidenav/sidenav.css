@@ -108,11 +108,6 @@
     border-radius: 6px;
 }
 
-.tab-content {
-    font-size: .875rem;
-    font-weight: 500;
-}
-
 .logout-container{
     padding: 2rem 1.75rem;
     gap: .75rem;
@@ -124,3 +119,27 @@
     color: red;
     
 }
+
+.current-tab a{
+    text-decoration: none;
+    color: black;
+    font-size: .875rem;
+    font-weight: 500;
+}
+
+.current-tab a:hover, .current-tab a.focus {
+    color: white;
+}
+
+/* expand */
+.expand-all {
+    transform: scaleX(1.17); 
+    transform-origin: left;
+}
+
+.container-expanded {
+    margin-left: -11rem;
+    width: 100%;
+    overflow: hidden;
+}
+
