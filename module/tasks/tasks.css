@@ -104,7 +104,7 @@
     position: relative;
 }
 
-.tasks-button{
+.tasks-button {
     position: relative;
     left: 35%;
 }
@@ -400,4 +400,74 @@ input:focus {
     position: fixed;
     width: 100%;
     height: 100%;
+}
+
+/* User Added Task */
+#user-added {
+    width: 996px;
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid #EEF2FF;
+    background-color: white;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.user-added_header {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.user-added_description {
+    font-size: .875rem;
+    color: #4A5565;
+    font-weight: 400;
+    margin-bottom: .75rem;
+}
+
+.user-chosen_info {
+    margin-left: 2rem;
+}
+
+.user-chosen_difficulty {
+    width: 3.8125rem;
+    height: 20px;
+    font-size: .75rem;
+    color: white;
+    font-weight: 500;
+    background-color: #FE9A00;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.user-chosen_date {
+    font-size: .75rem;
+    font-weight: 400;
+    color: #6A7282;
+}
+
+.user-added-contents {
+    justify-content: space-between;
+}
+
+.delete-btn {
+    width: 2.25rem;
+    height: 2rem;
+    border: none;
+    background-color: transparent;
+    border-radius: 6px;
+    position: absolute;
+    right: 1rem;
+    top: 1.125rem;
+}
+
+.user-added-contents {
+    margin-bottom: .75rem;
+    gap: .75rem;
+}
+
+.user-added_main {
+    gap: .75rem;
 }

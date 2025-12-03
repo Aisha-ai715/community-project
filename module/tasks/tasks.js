@@ -6,7 +6,15 @@ const tasksButtom = document.querySelector('.tasks-button');
 const taskStateSection = document.querySelector('.tasks-state');
 const addButtom = document.querySelector('.tasks-buttom_add');
 const addTaskDiv = document.getElementById('add-box_template');
-const mainBlur = document.querySelector('.main');
+const allMainSelector = document.querySelector('.main');
+const LoadingAddTemplate = document.getElementById('user-task_template');
+const noContentBox = document.querySelector('.tasks-contents-list');
+
+// let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+// let stats = {
+//     active: 0,
+//     completed: 0
+// };
 
 
 taskTabProgress.addEventListener('click', () => {
@@ -41,25 +49,110 @@ function btnClick() {
         const content3 = addBtnTemplate.content.cloneNode(true);
         addTaskDiv.appendChild(content3);
 
-        const allMainSelector = document.querySelector('.main');
-        allMainSelector.classList.add('.main-color_overlay');
-
         const cancelBtn = document.getElementById('cancel-btn');
         const closeTask = document.querySelector('.close-box-img');
 
-        closeTask.addEventListener('click', () => {
+        function closeBox() {
             addTaskDiv.innerHTML = "";
-            allMainSelector.classList.remove('.main-color_overlay');
-        })
+        }
 
-        cancelBtn.addEventListener('click', () => {
-            addTaskDiv.innerHTML = "";
-            allMainSelector.classList.remove('.main-color_overlay');
-        })
+        closeTask.addEventListener('click', closeBox)
+        cancelBtn.addEventListener('click', closeBox)
+
+        const addTaskTitle = document.getElementById('add-task_user-title');
+        const addTaskDescription = document.getElementById('add-task_user-description');
+        const inputTaskDate = document.getElementById('add-task_date-input');
+        const inputOption = document.getElementById('input-option');
+        const activeNum = document.getElementById('active-tasks_num');
+        const completeNum = document.getElementById('completed-tasks_num');
+
+        function createTask() {
+            const createBtn = document.getElementById('create-btn');
+
+            createBtn.addEventListener('click', () => {
+
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                let stats = JSON.parse(localStorage.getItem('stats')) || { active: 0, completed: 0 };
+
+                if (addTaskTitle.value.length > 0 && addTaskDescription.value.length > 0) {
+
+                    const addedTaskTemplate = document.getElementById('user-added_tasks');
+                    const addedContent = addedTaskTemplate.content.cloneNode(true);
+                    LoadingAddTemplate.appendChild(addedContent);
+
+                    const addedTaskConstainer = document.getElementById('user-added');
+                    const templateHeader = document.querySelector('.user-added_header');
+                    const templateDesciption = document.querySelector('.user-added_description');
+                    const templatedate = document.querySelector('.user-chosen_date');
+                    const templatedifficalty = document.querySelector('.user-chosen_difficulty');
+                    const deleteIcon = document.querySelector('.delete-task');
+                    const notDoneCircle = document.querySelector('.task-notdone');
+                    const lineOne = document.getElementById('done-line_one');
+                    const lineTwo = document.getElementById('done-line_two');
+
+                    templateHeader.textContent = addTaskTitle.value;
+                    templateDesciption.textContent = addTaskDescription.value;
+                    templatedate.textContent += inputTaskDate.value;
+                    templatedifficalty.textContent = inputOption.value;
+                    activeNum.textContent = Number(activeNum.textContent) + 1;
+
+                    let taskObject = {
+                        title: addTaskTitle.value,
+                        description: addTaskDescription.value,
+                        date: inputTaskDate.value,
+                        priority: inputOption.value
+                    };
+
+                    tasks.push(taskObject);
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                    closeBox();
+
+                    noContentBox.style.display = "none";
+
+                    deleteIcon.addEventListener('click', () => {
+                        addedTaskConstainer.remove();
+                        activeNum.textContent = Number(activeNum.textContent) - 1;
+                    })
+
+                    let changeImg = true;
+                    notDoneCircle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (changeImg) {
+                            notDoneCircle.src = '/module/tasks/image/task-done.svg';
+                            templateHeader.style.color = "#4A5565";
+                            templateHeader.style.textDecoration = 'line-through';
+                            templateDesciption.style.textDecoration = 'line-through';
+                            completeNum.textContent = Number(completeNum.textContent) + 1;
+                            activeNum.textContent = Number(activeNum.textContent) - 1;
+                            changeImg = false;
+                        } else {
+                            notDoneCircle.src = "/module/tasks/image/not-done.svg";
+                            templateHeader.style.color = "black";
+                            templateHeader.style.textDecoration = 'none';
+                            templateDesciption.style.textDecoration = 'none';
+                            completeNum.textContent = Number(completeNum.textContent) - 1;
+                            activeNum.textContent = Number(activeNum.textContent) + 1;
+                            changeImg = true;
+                        }
+
+                        stats.active = Number(activeNum.textContent);
+                        stats.completed = Number(completeNum.textContent);
+                        localStorage.setItem('stats', JSON.stringify(stats));
+
+                    })
+
+                }
+            })
+        }
+
+        createTask();
+
     })
 }
 
 btnClick();
+
 
 const controlTab = function () {
     const aiHistoryContent = document.getElementById('AI-summary-history_template');
@@ -82,7 +175,7 @@ const controlTab = function () {
         aiHistoryTab.style.backgroundColor = "#F3F4F6";
         aiSummaryTab.style.backgroundColor = "white";
 
-        aiHistoryContent.innerHTML = " ";
+        aiHistoryContent.innerHTML = "";
         aiList.style.display = "block";
         aiList.style.display = "flex";
         aiList.style.alignItems = "center";

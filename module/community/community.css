@@ -1,10 +1,11 @@
 .community {
     box-sizing: border-box;
     border: 1px solid #EEF2FF;
+    background-color: white;
     border-radius: 8px;
     width: 64.4375rem;
     box-shadow: 2px 2px 2px #dfdada, -2px 2px 2px #dfdada;
-    margin: 2rem 0 2rem 2.5rem
+    margin: 2rem 0 2rem .5rem
 }
 
 .community_flex {
@@ -48,15 +49,19 @@
 }
 
 .community-posts-AI,
-.reply-ai-section {
+.reply-ai-section,
+#nochat-box {
     width: 61.1875rem;
     min-height: 9rem;
-    border: 1px solid #EEF2FF;
     border-radius: 6px;
-    padding: 1rem;
     box-sizing: border-box;
 }
 
+.community-posts-AI,
+.reply-ai-section {
+    border: 1px solid #EEF2FF;
+    padding: 1rem;
+}
 
 .reply-ai-section {
     min-height: 5.875rem;
@@ -114,4 +119,23 @@
     justify-content: space-around;
     align-items: center;
     margin-left: auto;
+}
+
+#nochat-box {
+    border: 1px dashed #EEF2FF;
+    text-align: center;
+    margin: 0 auto 1.5625rem auto;
+    padding-top: 2rem;
+    background-color: #F9FAFB;
+
+}
+
+#nochat-box img {
+    margin-bottom: 1.25rem;
+}
+
+#nochat-box p {
+    font-size: 1rem;
+    color: #6A7282;
+    font-weight: 400;
 }

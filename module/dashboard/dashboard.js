@@ -1,9 +1,15 @@
+
 const title = document.querySelector('.dashboard-title');
+const changeContent = document.querySelectorAll('.change-content');
+const cardOneAmount = document.querySelector('.amount-num');
+const cardOneCompleted = document.querySelector('.amount-comment');
+const cardFiveImge = document.querySelector('.card-five-image');
+const cardFiveContent = document.querySelector('.card-five-p');
+const recentLoaded = document.querySelector('.user-recent-template');
 
 let gettitle = JSON.parse(localStorage.getItem('userInfo'));
 title.innerHTML = `Good evening, ${gettitle.Name}!`;
 
-const changeContent = document.querySelectorAll('.change-content');
 
 const card = [
     { title: "Total Expenses", image: "/components/card/images/dollar-icon.svg", Alt: 'dollar icon', amount: "$0.0", comment: "This period" },
@@ -14,7 +20,7 @@ const card = [
 
 changeContent.forEach((ele, i) => {
     const cardTitle = ele.querySelector('.card-title');
-    const cardImage = ele.querySelector('.img-conatainer img'); 
+    const cardImage = ele.querySelector('.img-conatainer');
     const cardAmount = ele.querySelector('.amount-num');
     const cardComment = ele.querySelector('.amount-comment');
 
@@ -25,3 +31,33 @@ changeContent.forEach((ele, i) => {
     cardComment.textContent = card[i].comment;
 });
 
+let stats = JSON.parse(localStorage.getItem('stats')) || { active: 0, completed: 0 };
+cardOneAmount.textContent = stats.active;
+cardOneCompleted.textContent = stats.completed + " Completed";
+
+let createdTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+if (createdTasks.length > 0) {
+
+    recentLoaded.innerHTML = "";
+    const lastTask = createdTasks[createdTasks.length - 1];
+    const taskTemplate = document.getElementById('tasks-template');
+    const contentsOfTemp = taskTemplate.content.cloneNode(true);
+    recentLoaded.appendChild(contentsOfTemp);
+
+    const recentTitle = document.querySelector('.recent-task_title');
+    const recentDate = document.querySelector('.recent-task_date');
+    const recentLevel = document.querySelector('.recent-task_level');
+
+    recentTitle.textContent = lastTask.title;
+    recentDate.textContent = lastTask.date;
+    recentLevel.textContent = lastTask.priority;
+
+    cardFiveImge.style.display = "none";
+    cardFiveContent.style.display = "none";
+
+} else {
+    cardFiveImge.style.display = "none";
+    cardFiveContent.style.display = "none";
+    recentLoaded.innerHTML = "";
+}

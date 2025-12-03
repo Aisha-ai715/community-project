@@ -1,5 +1,3 @@
-// import { btnClick } from './module/tasks/tasks.js';
-
 const userName = document.querySelector('.user-name');
 const userEmail = document.querySelector('.user-email');
 const firstLetter = document.querySelector('.first-letter');
@@ -97,7 +95,6 @@ dashPage.addEventListener('click', () => {
     window.location.href = '/main.html';
 })
 
-
 taskPage.addEventListener('click', () => {
 
     mainPage.classList.add('main-tasks__contents');
@@ -106,7 +103,6 @@ taskPage.addEventListener('click', () => {
         return res.text();
     }).then((inside) => {
         mainPage.innerHTML = inside;
-        // btnClick();
 
         const taskJs = document.createElement('script');
         taskJs.src = '/module/tasks/tasks.js';
